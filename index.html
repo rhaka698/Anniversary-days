@@ -1,1 +1,133 @@
-Your index.html is prepared. Please copy the full code from canvas into this file locally.
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Anniversary — 12-12-25</title>
+  <style>
+    :root{
+      --glass: rgba(255,255,255,0.06);
+      --text: #fff;
+      --muted: rgba(255,255,255,0.8);
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:#000}
+
+    .bg-video{
+      position:fixed;inset:0;z-index:-2;object-fit:cover;width:100%;height:100%;filter:brightness(0.55);
+    }
+    .overlay{
+      position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:-1;
+    }
+
+    .center{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      position:relative;
+      top:0;
+    }
+
+    .card{
+      width:min(880px,96%);
+      background:rgba(255,255,255,0.03);
+      border-radius:18px;
+      padding:28px;
+      backdrop-filter: blur(6px);
+      border:1px solid rgba(255,255,255,0.06);
+      color:var(--text);
+    }
+
+    .logo{
+      width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,#ff9aa2,#ffd1dc);
+      display:grid;place-items:center;font-weight:700;color:#fff;
+    }
+
+    header{display:flex;gap:14px;align-items:center}
+    h1{margin:0;font-size:20px}
+    .lead{color:var(--muted);font-size:14px;margin-top:6px}
+
+    .enter-wrap{display:flex;gap:12px;margin-top:22px}
+    .enter-btn{
+      background:linear-gradient(90deg,#ff8fa3,#ffb3c7);
+      border:0;padding:12px 18px;border-radius:12px;font-weight:700;cursor:pointer;
+    }
+    .date-badge{padding:8px 14px;border-radius:16px;background:rgba(255,255,255,0.04);color:var(--muted);font-size:14px}
+
+    .content{margin-top:18px;display:grid;gap:16px}
+
+    .message{
+      padding:18px;
+      border-radius:16px;
+      background:rgba(255,255,255,0.08);
+      backdrop-filter:blur(14px) saturate(1.2);
+      -webkit-backdrop-filter:blur(14px) saturate(1.2);
+      border:1px solid rgba(255,255,255,0.12);
+      line-height:1.6;
+      opacity:0;
+      transform:translateY(8px);
+      transition:all .5s;
+    }
+    .message.show{opacity:1;transform:none}
+
+    .spotify-embed{border-radius:12px;overflow:hidden}
+
+    .small{font-size:13px;color:var(--muted)}
+  </style>
+</head>
+<body>
+
+<video class="bg-video" autoplay muted loop playsinline id="bgvid">
+  <source src="background.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
+
+<main class="center">
+<section class="card">
+<header>
+  <div class="logo">12</div>
+  <div>
+    <h1>Untukmu — Malam Anniversary</h1>
+    <p class="lead">Tanggal istimewa 12-12-25 · kejutan kecil dari mamass ✨</p>
+  </div>
+</header>
+
+<div class="enter-wrap">
+  <button id="enterBtn" class="enter-btn">12-12-25</button>
+  <div class="date-badge">Tekan untuk masuk</div>
+</div>
+
+<div class="content">
+  <div class="spotify-embed">
+    <iframe src="https://open.spotify.com/embed/track/4rcuS31IcZynp91dqvmhmA?si=fUO3N0fyS_Gshw0okKNVdA"
+            width="100%" height="80" frameborder="0"></iframe>
+  </div>
+
+  <article class="message" id="messageBox">
+    <p>Sayangku, malam ini kita merayakan satu tahun perjalanan kita ✨🥰</p>
+    <p>Maaf tadi sempat ribet—mamass harus buka Brimo sebentar. Terima kasih karena selalu menemani dan sabar sampai di sini. Mamass janji bakal terus berusaha buat masa depan kita.</p>
+    <p>Maaf buat semua salah setahun ini. Semoga semua urusanmu segera selesai, dan hadiah dari mamass mungkin sedikit telat tapi selalu dari hati ❤️</p>
+    <p>Kita jalanin semua bareng-bareng: susahmu susahku, bahagiamu bahagiaku. Jangan pergi ya sayang—mamass cinta kamu selamanya.</p>
+    <p class="small" style="margin-top:12px">— Mamass 🥰💞</p>
+  </article>
+</div>
+
+</section>
+</main>
+
+<script>
+const btn = document.getElementById('enterBtn');
+const msg = document.getElementById('messageBox');
+const vid = document.getElementById('bgvid');
+
+btn.addEventListener('click', ()=>{
+  msg.classList.toggle('show');
+  if(vid.paused) vid.play().catch(()=>{});
+});
+</script>
+
+</body>
+</html>
